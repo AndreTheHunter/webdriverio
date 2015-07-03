@@ -8,3 +8,4 @@ coverage
 .idea
 build
 test.png
+*.orig
