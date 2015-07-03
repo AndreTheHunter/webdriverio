@@ -22,12 +22,12 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test-all",
-    "test-mobile": "grunt test-mobile",
+    "test": "grunt test-functional",
     "test-desktop": "grunt test-desktop",
+    "test-mobile": "grunt test-mobile",
     "test-functional": "grunt test-functional",
     "test-multibrowser": "grunt test-multibrowser",
-    "coverage": "./node_modules/.bin/istanbul cover -x \"**/helpers/_*.js\" ./test/runner.js",
+    "coverage": "istanbul cover grunt test-functional",
     "postinstall": "[ \"$NODE_ENV\" != production ] && cd test/site/www/ && bower install",
     "prepublish": "npm prune"
   },
@@ -57,7 +57,6 @@
     "grunt-cli": "^0.1.13",
     "grunt-contrib-connect": "^0.10.1",
     "grunt-force-task": "^1.0.0",
-    "grunt-istanbul": "^0.6.1",
     "grunt-mocha-test": "^0.12.7",
     "grunt-passfail": "^0.1.2",
     "grunt-selenium-server": "^0.1.5",

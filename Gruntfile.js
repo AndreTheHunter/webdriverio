@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 
     function setEnv(env) {
         var testSrc = 'mochaTest.test.src',
-            specDir = env.match(/^(functional|multibrowser)$/);
+            specDir = env.match(/^(desktop|functional|mobile|multibrowser)$/);
 
         process.env._ENV = env;
 
@@ -33,9 +33,6 @@ module.exports = function (grunt) {
             }
         }
     }
-
-    //TODO istanbul code coverage
-    // "coverage": "./node_modules/.bin/istanbul cover -x \"**/helpers/_*.js\" ./test/runner.js",
 
     grunt.initConfig({
         'connect': {
@@ -61,25 +58,6 @@ module.exports = function (grunt) {
         'appium': {
             options: {
                 args: []
-            }
-        },
-        'instrument': {
-            files:  'lib/**/**.js',
-            options: {
-                lazy: true
-            }
-        },
-        'storeCoverage': {
-            options: {
-                dir: './coverage'
-            }
-        },
-        'makeReport': {
-            src: './coverage/**/*.json',
-            options: {
-                type: 'lcov',
-                dir: './coverage',
-                print: 'detail'
             }
         },
         'mochaTest': {
@@ -109,9 +87,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('run-test', ['connect', 'start-selenium-server', 'force:mochaTest', 'passfail']);
 
-    // TODO run test against instrumented source
-    grunt.registerTask('coverage', ['instrument', 'test-functional', 'storeCoverage', 'makeReport']);
-
     grunt.registerTask('test-functional', function () {
         setEnv('functional');
         setBrowser('phantomjs');
@@ -140,6 +115,4 @@ module.exports = function (grunt) {
         // process.env._APPIUMVERSION = 1.2;
         grunt.task.run('connect', 'appium', 'force:mochaTest', 'passfail');
     });
-
-    grunt.registerTask('default', ['test-desktop']);
 }

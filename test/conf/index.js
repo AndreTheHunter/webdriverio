@@ -10,5 +10,4 @@ if(process.env._ENV === 'mobile') {
     asked = merge(asked, mobile);
 }
 
-
 module.exports = merge(defaults, asked);
