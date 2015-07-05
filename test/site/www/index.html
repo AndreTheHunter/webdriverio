@@ -128,6 +128,7 @@
 
     <div class="goAway">I will be gone in a second</div>
     <div class="notVisible" style="visibility: hidden;">Where was I?</div>
+    <div class="notDisplayable" style="display: none;">Where am I?</div>
     <div class="onMyWay">On my way out of the document!</div>
     <div class="notInViewports notInViewport">Where am I?</div>
     <div class="notInViewports">Where am I?</div>
@@ -201,6 +202,7 @@
             $('.sometextlater').html('some text');
             $('.sometext').html('');
             $('.notVisible').css('visibility', 'visible');
+            $('.notDisplayable').css('display', 'block');
             $('.onMyWay').css('visibility','hidden');
             $('.invisibleParent').removeClass('hidden');
         },250);
